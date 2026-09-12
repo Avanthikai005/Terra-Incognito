@@ -1,0 +1,10 @@
+{
+  "similar_domain": {
+    "description": "3 longitude-band pseudo-regions of Hurricane Matthew (near-identical domains, ~4% feature distance); the previous benchmark as-is.",
+    "regions": ["hurricane-matthew-A", "hurricane-matthew-B", "hurricane-matthew-C"]
+  },
+  "cross_disaster": {
+    "description": "hurricane -> tsunami. Two distinct disaster types; palu RGB is derived from its 12-band Sentinel-2 tiles. Note palu's collapsed label distribution is heavily imbalanced (mostly undamaged).",
+    "regions": ["hurricane-matthew", "palu-tsunami"]
+  }
+}

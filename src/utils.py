@@ -7,11 +7,46 @@ import numpy as np
 import torch
 import torchvision.transforms as T
 
-# Ordering used everywhere (accuracy-matrix column order = task order).
-DEFAULT_REGIONS = ["hurricane-michael", "palu", "santa-rosa-fire"]
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PATCHES_ROOT = os.path.join(PROJECT_ROOT, "data", "patches")
+RESULTS_ROOT = os.path.join(PROJECT_ROOT, "results")
+CONFIGS_ROOT = os.path.join(PROJECT_ROOT, "configs")
+PRE_ROOT = os.path.join(PATCHES_ROOT, "_pre")
 
-PATCHES_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "patches")
-RESULTS_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results")
+# Ordering used everywhere (accuracy-matrix column order = task order).
+# Pseudo-regions = longitudinal bands of the hurricane-matthew tiles, see
+# data/prepare_selected.py. Used when data/patches/region_order.txt is absent.
+DEFAULT_REGIONS = ["hurricane-matthew-A", "hurricane-matthew-B", "hurricane-matthew-C"]
+DEFAULT_SEQUENCE = "similar_domain"
+
+
+def load_task_sequences() -> dict:
+    path = os.path.join(CONFIGS_ROOT, "task_sequences.json")
+    if not os.path.exists(path):
+        return {DEFAULT_SEQUENCE: {"regions": DEFAULT_REGIONS, "description": ""}}
+    with open(path) as f:
+        return json.load(f)
+
+
+def load_sequence(name: str) -> list:
+    """Region list for a named task sequence (configs/task_sequences.json)."""
+    seqs = load_task_sequences()
+    if name in seqs:
+        return list(seqs[name]["regions"])
+    if name in ("", DEFAULT_SEQUENCE):
+        return default_regions()
+    raise ValueError(f"Unknown task sequence {name!r}; available: {list(seqs)}")
+
+
+def default_regions():
+    """Region order from the prep cache (authoritative) or the default list."""
+    order = os.path.join(PATCHES_ROOT, "region_order.txt")
+    if os.path.exists(order):
+        with open(order) as f:
+            regs = [l.strip() for l in f if l.strip()]
+    else:
+        regs = []
+    return regs if regs else DEFAULT_REGIONS
 
 
 def set_seed(seed: int = 42) -> None:
@@ -91,7 +126,8 @@ class MergedDataset(torch.utils.data.Dataset):
 
 
 def make_joint_loader(regions, split, train, **kw):
-    dss = [PatchDataset(r, split, train=train, **kw) for r in regions]
+    ds_kw = {k: kw[k] for k in ("subset", "seed") if k in kw}
+    dss = [PatchDataset(r, split, train=train, **ds_kw) for r in regions]
     ds = MergedDataset(dss)
     return torch.utils.data.DataLoader(ds, batch_size=kw.get("batch_size", 32),
                                        shuffle=train, num_workers=kw.get("num_workers", 2))

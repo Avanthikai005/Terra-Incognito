@@ -17,6 +17,15 @@ class ReplayBuffer:
         self.labels = []      # list of ints
         self.origin = []      # region tag of each sample (for stratified sampling / stats)
 
+    def set_capacity(self, new_capacity: int):
+        """Resize buffer; drop excess samples uniformly at random."""
+        self.capacity = new_capacity
+        if new_capacity and len(self.imgs) > new_capacity:
+            keep = sorted(torch.randperm(len(self.imgs))[:new_capacity].tolist())
+            self.imgs = [self.imgs[i] for i in keep]
+            self.labels = [self.labels[i] for i in keep]
+            self.origin = [self.origin[i] for i in keep]
+
     # ------------------------------------------------------------------
     def add(self, imgs, labels, region: str):
         """Add samples from one batch; drop uniformly at random past capacity."""
@@ -44,6 +53,9 @@ class ReplayBuffer:
 
     @property
     def size(self) -> int:
+        return len(self.imgs)
+
+    def __len__(self) -> int:
         return len(self.imgs)
 
     @property
