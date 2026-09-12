@@ -263,6 +263,7 @@ def main():
         assign = longitude_bands(usable_tci, N_REGIONS)
         name_by_band = {c: f"hurricane-matthew-{'ABC'[c]}" for c in range(N_REGIONS)}
         region_map = {u: name_by_band[c] for u, c in zip(uids, assign.tolist())}
+        os.makedirs(PATCHES_ROOT, exist_ok=True)
         with open(os.path.join(PATCHES_ROOT, "region_map.json"), "w") as f:
             json.dump(region_map, f, indent=2)
         region_order = []

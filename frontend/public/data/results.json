@@ -1,0 +1,77 @@
+{
+  "matrices": {
+    "naive": [
+      [
+        78,
+        null,
+        null
+      ],
+      [
+        62,
+        75,
+        null
+      ],
+      [
+        55,
+        68,
+        74
+      ]
+    ],
+    "joint": [
+      [
+        75,
+        77,
+        76
+      ],
+      [
+        75,
+        77,
+        76
+      ],
+      [
+        75,
+        77,
+        76
+      ]
+    ],
+    "cl": [
+      [
+        78,
+        null,
+        null
+      ],
+      [
+        72,
+        75,
+        null
+      ],
+      [
+        70,
+        73,
+        75
+      ]
+    ],
+    "cl_adaptive": [
+      [
+        78,
+        null,
+        null
+      ],
+      [
+        75,
+        75,
+        null
+      ],
+      [
+        73,
+        74,
+        76
+      ]
+    ]
+  },
+  "labels": [
+    "hurricane-matthew-A",
+    "hurricane-matthew-B",
+    "hurricane-matthew-C"
+  ]
+}

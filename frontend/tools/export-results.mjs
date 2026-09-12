@@ -26,12 +26,16 @@ const out = { matrices: {}, labels: null };
 let wrote = false;
 
 for (const mode of METHODS) {
-  const path = join(RESULTS_DIR, `${mode}_matrix.json`);
+  let path = join(RESULTS_DIR, `${mode}_matrix.json`);
   if (!existsSync(path)) {
-    console.warn(`[data] missing ${path} — skipping (demo fallback stays active)`);
+    path = join(RESULTS_DIR, `similar_domain_${mode}_matrix.json`);
+  }
+  if (!existsSync(path)) {
+    console.warn(`[data] missing ${mode} matrix in ${RESULTS_DIR} — skipping (demo fallback stays active)`);
     continue;
   }
-  const data = JSON.parse(readFileSync(path, "utf8"));
+  const raw = readFileSync(path, "utf8").replace(/\bNaN\b/g, "null");
+  const data = JSON.parse(raw);
   const rows = (data.matrix ?? []).map((row) =>
     row.map((v) =>
       v === null || v === undefined || !Number.isFinite(v) ? null : Math.round(v * 100)

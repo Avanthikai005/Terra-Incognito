@@ -1,12 +1,13 @@
 import { METHODS, type MethodId } from "../data/results";
 
-export type PageId = "overview" | "simulator" | "distance" | "qualitative";
+export type PageId = "overview" | "simulator" | "distance" | "qualitative" | "inference";
 
 const NAV: { id: PageId; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "simulator", label: "Simulator" },
   { id: "distance", label: "Domain distance" },
   { id: "qualitative", label: "Qualitative plates" },
+  { id: "inference", label: "Model lab (Live)" },
 ];
 
 interface SidebarProps {

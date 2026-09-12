@@ -4,6 +4,7 @@ import OverviewPage from "./components/OverviewPage";
 import SimulatorPage from "./components/SimulatorPage";
 import DomainDistancePage from "./components/DomainDistancePage";
 import QualitativePage from "./components/QualitativePage";
+import ModelInferencePage from "./components/ModelInferencePage";
 import {
   FALLBACK_MATRICES,
   buildResults,
@@ -21,8 +22,7 @@ export default function App() {
   const [page, setPage] = useState<PageId>("overview");
   const [method, setMethod] = useState<MethodId>("naive");
 
-  // Start on bundled demo data, then silently upgrade if a real results.json /
-  // qualitative.json is present (see src/data/results.ts header comments).
+  // Start on bundled demo data, then upgrade if real results are found
   const [results, setResults] = useState<Results>(() =>
     buildResults(FALLBACK_MATRICES)
   );
@@ -32,6 +32,28 @@ export default function App() {
 
   useEffect(() => {
     let alive = true;
+
+    // Try fetching live API results first
+    fetch("/api/results")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((apiData) => {
+        if (!alive || !apiData?.matrices) return;
+        const validModes: MethodId[] = ["naive", "joint", "cl"];
+        const hasAll = validModes.every((m) => Array.isArray(apiData.matrices[m]));
+        if (hasAll) {
+          const formattedMatrices: Record<MethodId, (number | null)[][]> = {
+            naive: apiData.matrices.naive,
+            joint: apiData.matrices.joint,
+            cl: apiData.matrices.cl,
+          };
+          setResults(buildResults(formattedMatrices));
+          return;
+        }
+      })
+      .catch(() => {
+        // API offline; fall back to static files
+      });
+
     loadResults().then((r) => alive && setResults(r));
     loadQualitative().then((q) => alive && setQualitative(q));
     return () => {
@@ -57,6 +79,7 @@ export default function App() {
             onMethodChange={changeMethod}
           />
         )}
+        {page === "inference" && <ModelInferencePage />}
       </main>
     </div>
   );
