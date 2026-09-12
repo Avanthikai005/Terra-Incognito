@@ -16,6 +16,32 @@ Installs deps into `venv/`, prepares patches, trains **naive → joint → cl**,
 and plots. If xBD is **not** downloaded under `data/xbd/`, a learnable synthetic
 fallback kicks in so the full pipeline still runs end‑to‑end.
 
+### UI demo (`frontend/`)
+
+Interactive training‑timeline simulator for presenting the project — no Streamlit.
+
+```bash
+cd frontend
+bash run.sh            # deps + placeholder assets + real data export, then `npm run dev`
+# or directly:  npm install && npm run dev
+```
+
+Open the printed URL (default http://localhost:5173). Four pages:
+
+- **Overview** — the problem in 3 bullets + schematic.
+- **Simulator** — step through Hurricane → Tsunami → Wildfire; pick a regime and
+  read the per‑region accuracy chart + full accuracy matrix and the forgetting
+  ledger (naive vs joint vs replay all reported side by side).
+- **Domain Distance** — forgetting vs inter‑region feature distance (key ablation).
+- **Qualitative** — per‑patch pred vs true labels for each method.
+
+Bundled demo numbers keep the app running out of the box. To plug in **real
+pipeline results**: run `bash run.sh` at the repo root, then
+`npm run data` in `frontend/` — this reads `results/{naive,joint,cl}_matrix.json`
+into `frontend/public/data/results.json` and swaps in `plots/domain_distance.png`.
+Placeholder assets are rendered by `frontend/tools/make_assets.py` (overview
+schematic, distance scatter, synthetic qualitative tiles).
+
 ### Real xBD
 Place the raw data so that `data/xbd/<disaster>/images/*.png` and
 `data/xbd/<disaster>/labels/*.json` exist, then run `bash run.sh`.

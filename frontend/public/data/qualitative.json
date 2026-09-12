@@ -1,0 +1,224 @@
+{
+  "hurricane-michael": [
+    {
+      "image": "/assets/qualitative/r1_0.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_1.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_2.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "destroyed",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_3.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "damaged",
+        "joint": "destroyed",
+        "cl": "destroyed"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_4.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_5.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_6.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r1_7.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "destroyed",
+        "cl": "destroyed"
+      }
+    }
+  ],
+  "palu": [
+    {
+      "image": "/assets/qualitative/r2_0.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_1.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "damaged",
+        "joint": "destroyed",
+        "cl": "destroyed"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_2.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_3.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_4.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_5.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "destroyed",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_6.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r2_7.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    }
+  ],
+  "santa-rosa-fire": [
+    {
+      "image": "/assets/qualitative/r3_0.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_1.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_2.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "destroyed",
+        "cl": "destroyed"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_3.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_4.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_5.png",
+      "true": "destroyed",
+      "pred": {
+        "naive": "destroyed",
+        "joint": "damaged",
+        "cl": "destroyed"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_6.png",
+      "true": "damaged",
+      "pred": {
+        "naive": "damaged",
+        "joint": "damaged",
+        "cl": "damaged"
+      }
+    },
+    {
+      "image": "/assets/qualitative/r3_7.png",
+      "true": "undamaged",
+      "pred": {
+        "naive": "undamaged",
+        "joint": "undamaged",
+        "cl": "undamaged"
+      }
+    }
+  ]
+}

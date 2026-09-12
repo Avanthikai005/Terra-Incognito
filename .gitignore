@@ -17,3 +17,8 @@ plots/
 # Misc
 .DS_Store
 *.log
+
+# Demo images the frontend needs at runtime are tracked on purpose.
+!frontend/public/assets/
+!frontend/public/assets/**/
+!frontend/public/assets/**/*.png
