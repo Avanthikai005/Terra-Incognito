@@ -17,7 +17,7 @@ does naive sequential training incur; (b) how much can a simple replay strategy 
 **Task setup (3 tasks, 3 regions).** Using xBD, tasks are split by disaster event
 so each task is a different region type:
 1. `hurricane-michael` — hurricane/flood (Florida, US)
-2. `palu` — earthquake + tsunami (Sulawesi, Indonesia)
+2. `palu` — tsunami (Sulawesi, Indonesia)
 3. `santa-rosa-fire` — wildfire (California, US)
 Building polygons from label JSONs are cropped (padded bbox) from the **post**-disaster
 image at 224×224; the xView2 4-class damage is collapsed to `undamaged / damaged /
