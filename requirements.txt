@@ -1,0 +1,7 @@
+# Exact pinned versions (verified against the CPU smoke test in this repo, Python 3.13).
+# Bump torch/torchvision together. For CUDA wheels add e.g. --index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+torchvision==0.21.0
+numpy==2.1.3
+pillow==11.1.0
+matplotlib==3.10.0

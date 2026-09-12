@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.pth
+
+# Data & artifacts
+data/xbd/
+data/patches/
+results/
+plots/
+*.pt
+*.png
+
+# Misc
+.DS_Store
+*.log
