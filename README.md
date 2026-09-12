@@ -1,8 +1,8 @@
 # Terra Incognita — Continual Learning for Cross‑Regional Disaster Response
 
 Satellite‑based building‑damage assessment (xBD/xView2) trained **sequentially across
-disasters/regions**: a Hurricane (`hurricane-michael`), a Tsunami (`palu`), and a
-Wildfire (`santa-rosa-fire`). We compare three regimes, measure catastrophic forgetting,
+disasters/regions**: a Hurricane (`hurricane-matthew`), a Tsunami (`palu`), and a
+Wildfire (`portugal-wildfire`). We compare three regimes, measure catastrophic forgetting,
 and — our originality anchor — correlate forgetting severity with a cheap
 **domain‑distance** computed from pretrained‑backbone features.
 
